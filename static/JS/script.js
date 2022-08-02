@@ -2,36 +2,19 @@ const player = document.querySelector('.player');
 const wheel = document.querySelector('.wheel');
 const clouds = document.querySelector('.clouds')
 const coin = document.querySelector('.coin')
-//const block = document.querySelector('.block')
 const progress = document.querySelector('.progress')
+const numberCoins = document.querySelector('.numberCoins')
 
-var countWheel = 0; //CONTADOR DE PULOS SOBRE RODAS - OK
 var countCoin = 0
 var countProgress = 0
-
-
 
 const jump = () => {
 
     player.classList.add('jump');
 
-    // var wheelPosition = wheel.offsetLeft;  
-    // var blockPosition = block.offsetLeft;
-
     setTimeout(() => {
         player.classList.remove('jump');
 
-        // if (wheelPosition < 200 || wheelPosition > 850){
-        //     //console.log(wheelPosition)
-        //     countWheel += 1;
-        //     //console.log('WHEEL: ' + countWheel)
-        // }
-        // if (wheelPosition <= blockPosition){
-        //     countWheel += 1
-        //     block.style.display = 'none'
-        //     console.log('WHEEL: ' + countWheel)
-        // }
-    
     }, 500)
 }
 
@@ -53,6 +36,7 @@ const loop = setInterval(() =>{
             coin.style.display = 'none';
             changeCoinStyle()
             changeProgress()
+            numberCoins.innerHTML = countCoin
             console.log('COIN: '+ countCoin)
             if (countProgress % 10 == 0){
                 countProgress = 0
