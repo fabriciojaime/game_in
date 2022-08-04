@@ -1,7 +1,52 @@
 * {
-    margin: 0%;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: #067106
+}
+
+.start{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 75%;
+}
+
+.textStart{
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: white;
+    padding: 10px 30px 10px 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(30, 33, 110);
+    font-size: 1.6em;    
+    margin-top: 200px;
+}
+.textHidden{
+    animation: text-animation 2s;
+}
+
+.explan{
+    text-align: left;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 1px 1px 10px 10px;
+    background-color: rgb(212, 212, 212);
+    padding: 5px 40px 5px 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(30, 33, 110);
+    font-size: 0.8em; 
+    margin-top: -18px;   
+}
+
+.explanHidden{
+    animation: explan-animation 2s;
 }
 
 .game-board{
@@ -11,15 +56,13 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(#87ceeb, #e0f6ff, #F5C101);
+    background: linear-gradient(#87ceeb, #e0f6ff, #f5c00173);
 }
 
 .wheel{
     position: absolute;
     bottom: 0;
     width: 60px;
-    /* right: -60px; */
-    /* left: 120px; */
     animation: wheel-animation 2s infinite linear;
 }
 
@@ -28,10 +71,7 @@
     bottom: 35%;
     width: 40px;
     animation: coin-animation 4s infinite linear;
-    /* 
-    BOTTON:     DEVE VARIAR ENTRE 10 - 50%
-    ANIMATION:  DEVE VARIAS entre 4 - 8s
-    */
+
 }
 
 .player{
@@ -51,6 +91,11 @@
     animation: clouds-animation 20s infinite linear;
 }
 
+.fogos{
+    display: none;
+    margin-left: 50%;
+}
+
 .group01{
     padding: 0;
     margin: 0;
@@ -68,19 +113,26 @@
 }
 
 .td03{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
-    padding-right: 10px;
-    text-align: right;
+    padding-right: 20px;
 }
 
+.levelName{
+    margin-left: 85%;
+    text-align: center;
+    width: 100px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
 .progress{
     width: 100%;
 }
 
-.numberCoins{
+.numberXP{
     width: 20%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
     text-align: left;
     margin-bottom: 3px;
@@ -88,35 +140,47 @@
     
 }
 
-/* .block{
-    background-color: #f5c001;
+.limit{
+    background-color: rgba(255, 255, 255, 0);
+    width: 55px;
+    height: 20px;
     position: absolute;
-    height: 40px;
-    width: 200px;
-    left: 0px;
-    bottom: 0px;
-    animation: block-animation 2s infinite linear;
-    
+    bottom: 0;
+    left: -55px;
 }
 
-@keyframes block-animation{
-    0%{
-        display: none;
-    }
-    40%{
-        display: none;
-    }
-    50%{
-        display: none;
-    }
-    60%{
-        display: none;
-    }
-    100%{
-        display: block;
-    }
+.container{
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bloco01{
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0);
+    width: 400px;
+    height: 70px;    
+}
+.bloco02{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    width: 400px;
+    height: 70px;
+    margin-top: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgba(255, 255, 255, 0.397);
+    /* color: black; */
+}
 
-} */
+.name{
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logo{
+    width: 25px;
+}
 
 @keyframes wheel-animation{
     from{
@@ -180,3 +244,30 @@
         right: 100%
     }
 }
+
+@keyframes text-animation{
+    0%{
+        background-color: rgb(255, 255, 255);
+        color: rgb(30, 33, 110);
+        border: 1px solid black;
+    }
+    100%{
+        background-color: rgba(255, 255, 255, 0);
+        color: rgba(30, 33, 110, 0);
+        border: 1px solid rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes explan-animation{
+    0%{
+        background-color: rgb(212, 212, 212);
+        color: rgb(30, 33, 110);
+        border: 1px solid black;
+    }
+    100%{
+        background-color: rgba(255, 255, 255, 0);
+        color: rgba(30, 33, 110, 0);
+        border: 1px solid rgba(0, 0, 0, 0);
+    }
+}
+
