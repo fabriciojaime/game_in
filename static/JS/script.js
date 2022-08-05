@@ -316,9 +316,7 @@ function popupGameover(){
         valueTotal.innerHTML = temp_total;
         
         if (localStorage.getItem('Total')){
-            console.log('TRUE')
             if(localStorage.getItem('Total') < temp_total){
-                console.log('GRAVOU PQ TEM!')
                 localStorage.setItem('Level', nivelName)
                 localStorage.setItem('Coin', countCoin)
                 localStorage.setItem('XP', XP)
@@ -326,7 +324,6 @@ function popupGameover(){
                 localStorage.setItem('Total', temp_total)
             }
         }else{
-            console.log('FALSE')
             localStorage.setItem('Level', nivelName)
             localStorage.setItem('Coin', countCoin)
             localStorage.setItem('XP', XP)
