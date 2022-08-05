@@ -47,7 +47,7 @@ function gamePlay(){
     }, 1500)
 }
 document.addEventListener('keydown', gamePlay);
-//
+document.addEventListener('touchstart', gamePlay);
 
 const jump = () => {
     player.classList.add('jump');
@@ -342,10 +342,16 @@ function popupGameover(){
 }
 
 document.addEventListener('keydown', jump);
+document.addEventListener('touchstart', jump);
 
 function reload(){
     document.addEventListener("keydown", function (evt) {
           if(evt.keyCode == 82){
+            document.location.reload()
+        }
+    });
+    document.addEventListener('touchstart', function(evt){
+        if(evt){
             document.location.reload()
         }
     });
