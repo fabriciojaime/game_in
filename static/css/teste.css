@@ -3,18 +3,46 @@
     margin: 0;
 }
 
-body{
+
+.popup{
     display: flex;
-    height: 100vh;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    left: 30%;
+    top: 30%;
+    background-color: #e80707b2;
+    border: 4px solid black;
+    flex-direction: column;
+    justify-content: space-evenly;
+
 }
 
-.teste{
-    background-color: red;
-    max-height: 100%;
+.go-title{
+    text-align: center;
+    font-size: 6vh;
 }
-.teste2{
-    background-color: blue;
-    width: 200px;
-    -webkit-align-items: stretch; 
-    align-items: stretch; 
+
+.details{
+    display: flex;
+    flex-direction: row;        
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    color: white;
 }
+
+.details > div{
+    text-align: left;
+    margin-left: 15px;
+}
+.value{
+    text-align: center;
+    margin-right: 15px;
+}
+
+.total{
+    margin-top: 15px;
+    color: black;
+}
+

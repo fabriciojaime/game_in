@@ -9,6 +9,20 @@ const fogos = document.querySelector('.fogos')
 const textStart = document.querySelector('.textStart')
 const explan = document.querySelector('.explan')
 const limit = document.querySelector('.limit')
+const popup = document.querySelector('.popup')
+
+const valueNivel = document.querySelector('.valueNivel')
+const valueCoins = document.querySelector('.valueCoins')
+const valueXP = document.querySelector('.valueXP')
+const valueBonus = document.querySelector('.valueBonus')
+const valueTotal = document.querySelector('.valueTotal')
+
+const best = document.querySelector('.best')
+const best_valueNivel = document.querySelector('.best_valueNivel')
+const best_valueCoins = document.querySelector('.best_valueCoins')
+const best_valueXP = document.querySelector('.best_valueXP')
+const best_valueBonus = document.querySelector('.best_valueBonus')
+const best_valueTotal = document.querySelector('.best_valueTotal')
 
 var countCoin = 0
 var countProgress = 0
@@ -17,6 +31,10 @@ var start = 0
 var XP = 0
 var BONUS = 0
 var totalXP = 0
+var nivelName = '--'
+
+// popup.style.display = 'flex';
+popup.style.display = 'none';
 
 // CONFIG GAME PLAY
 function gamePlay(){
@@ -105,9 +123,10 @@ const loop = setInterval(() =>{
 
         clouds.style.animation = 'none';
         clouds.style.left = `${cloudPositionInterval}px`;
-
-        finalXP()
+        
         clearInterval(loop)
+        popupGameover()
+        reload()
     }
 
     //  VERIFY LEVEL
@@ -230,18 +249,23 @@ function changeLevel(){
     switch (countCoin){
         case 10:
             levelName.innerHTML = 'Madeira'
+            nivelName = 'Madeira';
             break;
         case 20:
             levelName.innerHTML = 'Pedra'
+            nivelName = 'Pedra';
             break;
         case 35:
             levelName.innerHTML = 'Bronze'
+            nivelName = 'Bronze';
             break;
         case 50:
             levelName.innerHTML = 'Prata'
+            nivelName = 'Prata';
             break;
         case 100:
             levelName.innerHTML = 'Ouro'
+            nivelName = 'Ouro';
             break;        
     }
 }
@@ -272,9 +296,60 @@ function velocity(){
     }
 }
 
-function finalXP(){
-    totalXP = XP * (BONUS / 2);
-    numberXP.innerHTML = totalXP;
+function popupGameover(){
+
+        // GAMEOVER SOUND
+        const overSound = document.querySelector('.overSound');
+        overSound.correntTime = 0;
+        overSound.volume = 0.05;
+        overSound.play()
+
+    popup.style.display = 'flex';
+
+    setTimeout(() => {        
+        result = XP * (BONUS / 2);
+        temp_total = result + countCoin + XP
+        valueNivel.innerHTML = nivelName;
+        valueCoins.innerHTML = countCoin;
+        valueXP.innerHTML = XP;
+        valueBonus.innerHTML = result;
+        valueTotal.innerHTML = temp_total;
+        
+        if (localStorage.getItem('Total')){
+            console.log('TRUE')
+            if(localStorage.getItem('Total') < temp_total){
+                console.log('GRAVOU PQ TEM!')
+                localStorage.setItem('Level', nivelName)
+                localStorage.setItem('Coin', countCoin)
+                localStorage.setItem('XP', XP)
+                localStorage.setItem('Bonus', result)
+                localStorage.setItem('Total', temp_total)
+            }
+        }else{
+            console.log('FALSE')
+            localStorage.setItem('Level', nivelName)
+            localStorage.setItem('Coin', countCoin)
+            localStorage.setItem('XP', XP)
+            localStorage.setItem('Bonus', result)
+            localStorage.setItem('Total', temp_total)
+        }
+
+        best.style.background = '#d1be1786';
+        best_valueNivel.innerHTML = localStorage.getItem('Level')
+        best_valueCoins.innerHTML = localStorage.getItem('Coin')
+        best_valueXP.innerHTML = localStorage.getItem('XP')
+        best_valueBonus.innerHTML = localStorage.getItem('Bonus')
+        best_valueTotal.innerHTML = localStorage.getItem('Total')
+    }, 1400)
+
 }
 
 document.addEventListener('keydown', jump);
+
+function reload(){
+    document.addEventListener("keydown", function (evt) {
+          if(evt.keyCode == 82){
+            document.location.reload()
+        }
+    });
+}
